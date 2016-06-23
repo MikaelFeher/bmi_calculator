@@ -12,14 +12,25 @@
     <div id="main" style="text-align: center">
       <div class="row">
         <div class="small-6 columns small-offset-3 columns">
-          <h2>BMI Calculator</h2>
+          <h2 style="background-color: yellow">BMI Calculator</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns small-offset-3">
+          <p>Choose <em>metric</em> or <em>imperial</em> and input your height and weight</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns small-offset-3" style="text-align:right">
+          <input type="checkbox" class="radio" value="1" name="metric" />Metric</label>
+          <input type="checkbox" class="radio" value="1" name="imperial" />Imperial</label>
         </div>
       </div>
       <form>
         <div class="row">
           <div class="small-6 columns small-offset-3 columns">
-            <input type="text" id="weight" placeholder="Weight in kg">
             <input type="text" id="height" placeholder="Height in cm">
+            <input type="text" id="weight" placeholder="Weight in kg">
             <input type="button" href="#" class="button" id="calculate" value="Calculate">
           </div>
         </div>
@@ -42,6 +53,11 @@
     <script type="text/javascript">
     $(document).ready(function(){
       $('#calculate').click(function (){
+        if(){
+          //Calculate metric
+        }else{
+          //calculate imperial          
+        }
         var w = parseFloat($('#weight').val());
         var h = parseFloat($('#height').val());
         var person = new Person({weight: w, height: h});
