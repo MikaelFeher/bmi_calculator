@@ -22,8 +22,8 @@
       </div>
       <div class="row">
         <div class="small-6 columns small-offset-3" style="text-align:right">
-          <input type="radio" id="metric" value="1" name="units" />Metric</label>
-          <input type="radio" id="imperial" value="2" name="units" />Imperial</label>
+          <input type="radio" id="metric" value="metric" name="units" />Metric</label>
+          <input type="radio" id="imperial" value="imperial" name="units" />Imperial</label>
         </div>
       </div>
       <form>
@@ -52,11 +52,22 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+      $('input:radio[name="units"][value="metric"]').prop('checked', true);
+      $('input:radio[name="units"]').change(function(){
+        if($('#metric').is(':checked')) {
+          $("#weight").attr("placeholder", "Weight in kg");
+          $("#height").attr("placeholder", "Height in cm");
+        } else {
+          $("#weight").attr("placeholder", "Weight in lbs");
+          $("#height").attr("placeholder", "Height in inches");
+        }
+      });
+
       $('#calculate').click(function (){
-        if($('#metric').is(':checked')){
-          method = metric
+        if($('#metric').is(':checked')) {
+          method = "metric"
         } else if($('#imperial').is(':checked')){
-            method = imperial
+            method = "imperial"
         } else {
             alert("Please choose Metric or Imperial!")
         }

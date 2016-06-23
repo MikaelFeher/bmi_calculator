@@ -5,10 +5,10 @@ function Person(attr) {
 
 Person.prototype.calculate_bmi = function(method) {
   calculator = new BMICalculator();
-  if(method == metric){
-    calculator.metric_bmi(this);
-  }else{
-    calculator.imperial_bmi(this);
-  }
 
+    if(method == "metric") {
+      calculator.metric_bmi(this);
+    } else {
+      calculator.imperial_bmi(this);
+    }
 };
