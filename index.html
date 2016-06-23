@@ -12,7 +12,7 @@
     <div id="main" style="text-align: center">
       <div class="row">
         <div class="small-6 columns small-offset-3 columns">
-          <h2 style="background-color: yellow">BMI Calculator</h2>
+          <h2>BMI Calculator</h2>
         </div>
       </div>
       <div class="row">
@@ -22,8 +22,8 @@
       </div>
       <div class="row">
         <div class="small-6 columns small-offset-3" style="text-align:right">
-          <input type="checkbox" class="radio" value="1" name="metric" />Metric</label>
-          <input type="checkbox" class="radio" value="1" name="imperial" />Imperial</label>
+          <input type="radio" id="metric" value="1" name="units" />Metric</label>
+          <input type="radio" id="imperial" value="2" name="units" />Imperial</label>
         </div>
       </div>
       <form>
@@ -53,15 +53,17 @@
     <script type="text/javascript">
     $(document).ready(function(){
       $('#calculate').click(function (){
-        if(){
-          //Calculate metric
-        }else{
-          //calculate imperial          
+        if($('#metric').is(':checked')){
+          method = metric
+        } else if($('#imperial').is(':checked')){
+            method = imperial
+        } else {
+            alert("Please choose Metric or Imperial!")
         }
         var w = parseFloat($('#weight').val());
         var h = parseFloat($('#height').val());
         var person = new Person({weight: w, height: h});
-        person.calculate_bmi();
+        person.calculate_bmi(method);
         $('#display_value').html('Your BMI is ' + person.bmiValue);
         $('#display_message').html('and you are '+ person.bmiMessage);
        });
